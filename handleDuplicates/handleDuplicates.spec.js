@@ -41,6 +41,15 @@ const twoDifferentPersons = areArraysEqual(
         ["John Doe", ""]
     ]);
 
+const differentPersonsDifferentCompany = areArraysEqual(
+    handleDuplicates([
+        ["John Smith", "A Corp", "john.smith"],
+        ["John Smith", "B Corp", "jsmith"]
+    ]), [
+        ["John Smith","A Corp"],
+        ["John Smith","B Corp"]
+    ]);
+
 const testPerfomanceArray = [];
 for (let i = 0; i < MAX_USERS_AMOUNT; i++) {
     testPerfomanceArray.push([`Name${getRandomNumber(10)}`, `Name${getRandomNumber(15)}`, `Name${50}`]);
@@ -55,6 +64,7 @@ const areAllTestsPass =
     differentPersonsSameCompany &&
     differentPersonsSomeInSameCompany &&
     twoDifferentPersons &&
+    differentPersonsDifferentCompany &&
     isPerfomanceFit;
 
 console.log(`TESTS ARE ${areAllTestsPass ? 'PASS' : 'FAILED'}
@@ -62,6 +72,7 @@ console.log(`TESTS ARE ${areAllTestsPass ? 'PASS' : 'FAILED'}
     differentPersonsSameCompany, should use usernames as labels: ${differentPersonsSameCompany}
     differentPersonsSomeInSameCompany, should use both username and company name: ${differentPersonsSomeInSameCompany}
     twoDifferentPersons, should not use labels: ${twoDifferentPersons}
+    differentPersonsDifferentCompany, should use only company labels: ${differentPersonsDifferentCompany}
     isPerfomanceFit, should be executed for the less then ${MAX_TIME_SPENT/1000} seconds, for ${MAX_USERS_AMOUNT} users: ${isPerfomanceFit}
 `);
 
